@@ -15,6 +15,51 @@
 		2.3核心是stroke(),for in的使用，
 	3.后续发展：
 		3.1移动端的需要处理clientX获取的问题
+		3.2补充并总结一下canvas的使用方法（代码）
+		var c=document.getElementById('canvas');
+		var ctx=c.getContext('2d');
+		ctx.save();
+		ctx.beginPath();
+			/*画线*/
+			ctx.moveTo(0,0);
+			ctx.lineTo(23,330);
+			ctx.stroke();
+
+			/*绘制填充*/
+			ctx.fillStyle="#FF0000";
+			ctx.fillRect(0,0,150,75);
+
+			/*画圆*/
+			ctx.beginPath();
+			ctx.arc(95,50,40,0,2*Math.PI);
+			ctx.stroke();
+
+			/*绘制文字*/
+			ctx.font="30px Arial";
+			ctx.fillText("Hello World",10,50);
+			ctx.font="30px Arial";
+			ctx.strokeText("Hello World",10,50);
+
+			/*绘制渐变*/
+			// Create gradient
+			var grd=ctx.createLinearGradient(0,0,200,0);
+			grd.addColorStop(0,"red");
+			grd.addColorStop(1,"white");
+			// Fill with gradient
+			ctx.fillStyle=grd;
+			ctx.fillRect(10,10,150,80);	
+			// Create gradient
+			var grd=ctx.createRadialGradient(75,50,5,90,60,100);
+			grd.addColorStop(0,"red");
+			grd.addColorStop(1,"white");
+			// Fill with gradient
+			ctx.fillStyle=grd;
+			ctx.fillRect(10,10,150,80);
+
+			/*画图片*/
+			var img=document.getElementById("scream");
+			ctx.drawImage(img,10,10);
+		ctx.closePath();
  -->
 <head>
 	<meta charset="UTF-8">
